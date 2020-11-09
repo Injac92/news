@@ -1,0 +1,35 @@
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  color: $white;
+  background-color: $navblue;
+  font-size: 24px;
+  padding: 2% 4%;
+  text-shadow: 3px -2px 4px #be12e4;
+  
+  &__left {
+    ul {
+      list-style-type: none;
+    }
+
+    .navbar-items {
+      margin-right: 15px;
+      text-decoration: none;
+    }
+  }
+  &__right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    span {
+      margin-left: 15px;
+    }
+    
+  }
+  @include respond(mobile) {
+    .navbar-items {
+      display: inline;
+    }
+  }
+}
