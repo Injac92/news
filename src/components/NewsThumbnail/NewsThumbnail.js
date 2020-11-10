@@ -11,7 +11,7 @@ function NewsThumbnail(props) {
    : <img src="https://icon-library.com/images/no-image-available-icon/no-image-available-icon-6.jpg" alt="img doesnt exist"/>
 
   return(
-    <div>
+    <div className="thumbnail-container">
       <h3>{slicedTitle}</h3>
       {emptyImg}
       <p>{props.description}</p>

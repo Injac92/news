@@ -1,0 +1,15 @@
+.thumbnail-container {
+    margin: 4% auto;
+    width: 90%;
+    height: auto;
+    border: 2px solid $navblue;
+    border-radius: 5px;
+    h3 {
+        text-align: center;
+    }
+    img{
+        width: 100%;
+        height: auto;
+    }
+    
+}
