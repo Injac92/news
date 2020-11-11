@@ -2,18 +2,15 @@ import React from "react";
 import NewsThumbnail from "../NewsThumbnail/NewsThumbnail";
 
 function CategoryList(props) {
- const n = 3;
-  const categArray = props.newscategory.map((item, index) => {
-    while (index < 5){
+
+  const categArray = props.newscategory.slice(0, 3).map((item, index) => {
     return (
       <>
-        
-       <NewsThumbnail
-        key={item.url}
-        title={item.title}
-        imgurl={item.urlToImage}
-        
-      /> 
+        <NewsThumbnail
+          key={item.url}
+          title={item.title}
+          imgurl={item.urlToImage}
+        /> 
       </>
       
 
@@ -21,9 +18,13 @@ function CategoryList(props) {
       //   <h3 key={index}>{item.title}</h3>
         
       // </div>
-    )}
+    )
   })
-  return <div className="categories-container">{categArray}</div>
+  return <div className="categories-container">
+    {/* <Slider> */}
+    {categArray}
+    {/* </Slider> */}
+    </div>
 
 }
 

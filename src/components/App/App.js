@@ -2,8 +2,9 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 
 import Navbar from "../Navbar/Navbar";
-import TopNewsList from "../TopNewsList/TopNewsList";
+import TopNews from "../TopNews/TopNews";
 import CategoriesHolder from "../CategoriesHolder/CategoriesHolder";
+import Search from "../Search/Search";
 
 class App extends React.Component {
   constructor(props) {
@@ -11,25 +12,28 @@ class App extends React.Component {
     //initialising state
     this.state = {
       news: [],
-      newsgb: [],
-      lang: true
+      lang: "us"
     }
 
     this.langUS = this.langUS.bind(this)
     this.langGB = this.langGB.bind(this)
+    this.fetchTopNewsData = this.fetchTopNewsData.bind(this)
   }
 
   langGB() {
-    this.setState({ lang: false })
+    this.setState({ lang: "gb" }, () => {
+      this.fetchTopNewsData()
+    })
+
   }
   langUS() {
-    this.setState({ lang: true })
+    this.setState({ lang: "us" }, () => {
+      this.fetchTopNewsData()
+    })
   }
 
-    componentDidMount() {
-    //bring data from api
-    //fetch(`https://...country=${this.state.lang}&apiKey...`)
-    fetch(`https://newsapi.org/v2/top-headlines?country=us&apiKey=0192c8a932d94d0c9d50c5aa7c0bde08`)
+  fetchTopNewsData() {
+    fetch(`https://newsapi.org/v2/top-headlines?country=${this.state.lang}&apiKey=cac4b57a2551410db1064d0b97086522`)
       .then(response => {
         //konversion json to js
         return response.json();
@@ -41,78 +45,80 @@ class App extends React.Component {
         });
       })
       .catch(error => console.log(error));
+  }
 
-    fetch(`https://newsapi.org/v2/top-headlines?country=gb&apiKey=0192c8a932d94d0c9d50c5aa7c0bde08`)
-      .then(response => {
-        return response.json();
-      })
-      .then(data => {
-        this.setState({
-          newsgb: data.articles
-        });
-      })
-      .catch(error => console.log(error));
+  componentDidMount() {
+    //bring data from api
+    //fetch(`https://...country=${this.state.lang}&apiKey...`)
+    this.fetchTopNewsData()
 
   }
-  // generally maybe better solution would be using
-  // componentDidUpdate instead fetching both APIs
 
   render() {
     console.log("rendered")
     console.log(this.state.lang)
     return (
-
-      <Switch>
-        <Route
-          exact path="/"
-          render={() => {
-
-
-
-            const chosenLang =
-              this.state.lang ? <TopNewsList news={this.state.news} />
-                : <TopNewsList news={this.state.newsgb} />
-
-            return (
-              <div>
-                {/* <button onClick={this.langUS}>US</button>
-                <button onClick={this.langGB}>GB</button> */}
-                <Navbar
-                  toGB={this.langGB}
-                  toUS={this.langUS}
-                />
-                {chosenLang}
-              </div>
-            )
-          }}
+      <>
+        <Navbar
+          toGB={this.langGB}
+          toUS={this.langUS}
+          lang={this.state.lang}
         />
 
-        <Route
-          exact path="/categories"
-          render={() => {
-            return (
-              <div>
-                <Navbar />
+        <Switch>
+          <Route
+            exact path="/"
+            render={() => {
+
+
+
+              // const chosenLang =
+              //   this.state.lang ? <TopNewsList news={this.state.news} />
+              //     : <TopNewsList news={this.state.newsgb} />
+
+              return (
+                <div>
+                  <TopNews news={this.state.news} />
+                </div>
+              )
+            }}
+          />
+
+          <Route
+            exact path="/categories"
+            render={() => {
+              return (
                 <CategoriesHolder />
-              </div>
-            )
-          }}
-        />
+              )
+            }}
+          />
 
-        <Route
-          exact path="/search"
-          render={() => {
-            return (
-              <div>
-                <Navbar />
-                <p>search</p>
-              </div>
-            )
-          }}
-        />
-        {/* dont forget to create dummy error page! */}
-        <Route component={Error} />
-      </Switch>
+          <Route
+            exact path="/search"
+            render={() => {
+              return (
+                <Search
+                  lang={this.state.lang}
+                  news={this.state.news}
+                  key={this.state.news}
+                />
+              )
+            }}
+          />
+{/* 
+          <Route path="/news/:id"
+            render={(route) => {
+              return(
+                <SingleNews 
+                  test={route.history.location.test}
+                />
+              )
+            }}
+          /> */}
+          {/* dont forget to create dummy error page! */}
+          <Route component={Error} />
+        </Switch>
+      </>
     )
   }
 
