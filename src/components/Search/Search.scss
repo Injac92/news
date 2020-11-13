@@ -1,0 +1,15 @@
+.search-container {
+  text-align: center;
+  h3 {
+    margin-top: 20px;
+  }
+  .search__input {
+    margin: 20px;
+    padding: 5px 15px;
+    font-size: 14px;
+  }
+  .search__input:focus {
+    border: 1px solid;
+    outline: black;
+  }
+}

@@ -31,13 +31,16 @@ class Search extends React.Component {
     });
   };
 
+  
+
   render() {
+    const searchText = this.props.lang ==="us" ? "United States" : "Great Britain"
     console.log(this.state.searchNews)
     console.log(this.state.filteredNews)
     return (
-      <div>
-        <input type="text" onChange={this.onSearch} ref={this.input} />
-        Search area
+      <div className="search-container">
+        <h3>Search top news from {searchText} by term:</h3>
+        <input className="search__input" type="text" placeholder="Search term" onChange={this.onSearch} ref={this.input} />
         <TopNewsList news={this.state.filteredNews} />
       </div>
     )

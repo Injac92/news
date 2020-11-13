@@ -13,11 +13,16 @@ class CategoryList extends React.Component {
   componentDidMount() {
     this.fetchData();
   }
+
+  // componentDidUpdate(){
+
+  // }
+  
   componentWillReceiveProps(nextProps) {
     this.fetchData();
   }
   fetchData() {
-    fetch(`https://newsapi.org/v2/top-headlines?country=${this.props.lang}&category=${this.props.category}&apiKey=cac4b57a2551410db1064d0b97086522`)
+    fetch(`https://newsapi.org/v2/top-headlines?country=${this.props.lang}&category=${this.props.category}&apiKey=6366134eeaf642709f19eff34dfaa561`)
       .then(response => {
         return response.json();
       })
@@ -34,8 +39,8 @@ class CategoryList extends React.Component {
       infinite: true,
       slidesToShow: 3,
       slidesToScroll: 1,
-      autoplay: true,
-      autoplaySpeed: 3000,
+      autoplay: true,//true
+      autoplaySpeed: 4000,
       pauseOnHover: true
     };
 

@@ -25,8 +25,8 @@ class NewsThumbnail extends React.Component {
 
 
   render() {
-    console.log(this.props)
-    //sutting long titles
+
+    //cutting long titles
     const slicedTitle =
       this.props.title.length > 40 ? this.props.title.slice(0, 40) + "..." : this.props.title;
 
@@ -37,12 +37,12 @@ class NewsThumbnail extends React.Component {
 
     return (
       <div className="thumbnail-container">
-        {this.state.popUp}
+        {/* {this.state.popUp} */}
         <h3>{slicedTitle}</h3>
         {emptyImg}
         <p>{this.props.description}</p>
-        <span onClick={this.toggleSingleNews}>More</span>
-        <div class="pop-up" style={{ display: this.state.popUp }}>
+        <span className="read-more__button" onClick={this.toggleSingleNews}>More</span>
+        <div className="pop-up" style={{ display: this.state.popUp }}>
           POPUP
           {this.props.title}
           <span>X</span>

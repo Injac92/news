@@ -28,8 +28,8 @@ class Navbar extends React.Component {
           </ul>
         </div>
         <div className="navbar__right">
-          <span onClick={this.props.toGB} style={{color: this.props.lang ==="gb" ? "#ff0000" : "#ffffff"}}>GB</span>
-          <span onClick={this.props.toUS} style={{color: this.props.lang ==="us" ? "#ff0000" : "#ffffff"}}>US</span>
+          <span onClick={this.props.toGB} style={{color: this.props.lang ==="gb" ? "#b2db0b" : "#ffffff"}}>GB</span>
+          <span onClick={this.props.toUS} style={{color: this.props.lang ==="us" ? "#b2db0b" : "#ffffff"}}>US</span>
         </div>
       </div>
     )

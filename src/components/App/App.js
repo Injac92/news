@@ -34,7 +34,7 @@ class App extends React.Component {
   }
 
   fetchTopNewsData() {
-    fetch(`https://newsapi.org/v2/top-headlines?country=${this.state.lang}&apiKey=cac4b57a2551410db1064d0b97086522`)
+    fetch(`https://newsapi.org/v2/top-headlines?country=${this.state.lang}&apiKey=6366134eeaf642709f19eff34dfaa561`)
       .then(response => {
         //konversion json to js
         return response.json();
@@ -59,7 +59,7 @@ class App extends React.Component {
     console.log("rendered")
     console.log(this.state.lang)
     return (
-      <>
+      <div className="app-container">
         <Navbar
           toGB={this.langGB}
           toUS={this.langUS}
@@ -105,7 +105,7 @@ class App extends React.Component {
           {/* dont forget to create dummy error page! */}
           <Route component={Error} />
         </Switch>
-      </>
+      </div>
     )
   }
 

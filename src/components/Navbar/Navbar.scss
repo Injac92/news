@@ -3,10 +3,10 @@
   display: flex;
   justify-content: space-between;
   color: $white;
-  background-color: $navblue;
+  background-color: $PortoRikoDay;
   font-size: 24px;
   padding: 2% 4%;
-  text-shadow: 3px -2px 4px #be12e4;
+  text-shadow: 2px -1px 5px $grey;
   
   &__left {
     ul {
