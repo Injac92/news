@@ -3,34 +3,54 @@ import { Link } from "react-router-dom";
 import SingleNews from "../SingleNews/SingleNews";
 
 
-function NewsThumbnail(props) {
-  console.log(props)
-  //sutting long titles
-  const slicedTitle =
-  props.title.length > 40 ? props.title.slice(0, 40) + "..." : props.title;
+class NewsThumbnail extends React.Component {
 
-  //putting dummy img if there isnt any img from API
-  const emptyImg = 
-  props.imgurl ? <img src={props.imgurl} alt=""/>
-   : <img src="https://icon-library.com/images/no-image-available-icon/no-image-available-icon-6.jpg" alt="img doesnt exist"/>
+  constructor() {
+    super()
 
-  let showSingleNews = false
-  function toggleSingleNews(){
-    showSingleNews = !showSingleNews
-    alert("sadfsd")
+    this.state = {
+
+      popUp: "none"
+    }
+
+    this.toggleSingleNews = this.toggleSingleNews.bind(this)
+
+  }
+  toggleSingleNews() {
+    this.setState({
+      popUp: "block"
+    })
   }
 
-  return(
-    <div className="thumbnail-container">
-      <h3>{slicedTitle}</h3>
-      {emptyImg}
-      <p>{props.description}</p>
-      {/* <Link to={{pathname: "/news/1", test: props}}>More</Link> */}
-      <span onClick={toggleSingleNews}>More</span>
-      {showSingleNews ? 
-      <SingleNews props={props} /> : null}
-    </div>
-  )
+
+
+  render() {
+    console.log(this.props)
+    //sutting long titles
+    const slicedTitle =
+      this.props.title.length > 40 ? this.props.title.slice(0, 40) + "..." : this.props.title;
+
+    //putting dummy img if there isnt any img from API
+    const emptyImg =
+      this.props.imgurl ? <img src={this.props.imgurl} alt="" />
+        : <img src="https://icon-library.com/images/no-image-available-icon/no-image-available-icon-6.jpg" alt="img doesnt exist" />
+
+    return (
+      <div className="thumbnail-container">
+        {this.state.popUp}
+        <h3>{slicedTitle}</h3>
+        {emptyImg}
+        <p>{this.props.description}</p>
+        <span onClick={this.toggleSingleNews}>More</span>
+        <div class="pop-up" style={{ display: this.state.popUp }}>
+          POPUP
+          {this.props.title}
+          <span>X</span>
+        </div>
+        
+      </div>
+    )
+  }
 }
 
 export default NewsThumbnail

@@ -6,6 +6,7 @@ import TopNews from "../TopNews/TopNews";
 import CategoriesHolder from "../CategoriesHolder/CategoriesHolder";
 import Search from "../Search/Search";
 
+
 class App extends React.Component {
   constructor(props) {
     super()
@@ -65,16 +66,11 @@ class App extends React.Component {
           lang={this.state.lang}
         />
 
+
         <Switch>
           <Route
             exact path="/"
             render={() => {
-
-
-
-              // const chosenLang =
-              //   this.state.lang ? <TopNewsList news={this.state.news} />
-              //     : <TopNewsList news={this.state.newsgb} />
 
               return (
                 <div>
@@ -88,7 +84,7 @@ class App extends React.Component {
             exact path="/categories"
             render={() => {
               return (
-                <CategoriesHolder />
+                <CategoriesHolder  lang={this.state.lang}/>
               )
             }}
           />
@@ -105,16 +101,7 @@ class App extends React.Component {
               )
             }}
           />
-{/* 
-          <Route path="/news/:id"
-            render={(route) => {
-              return(
-                <SingleNews 
-                  test={route.history.location.test}
-                />
-              )
-            }}
-          /> */}
+
           {/* dont forget to create dummy error page! */}
           <Route component={Error} />
         </Switch>

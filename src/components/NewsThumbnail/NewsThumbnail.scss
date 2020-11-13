@@ -11,5 +11,13 @@
         width: 100%;
         height: auto;
     }
+    .pop-up {
+        position: absolute;
+        top: 0;
+        background-color: red;
+        height: 100%;
+        width: 100%;
+        display: none;
+    }
     
 }
