@@ -34,7 +34,7 @@ class App extends React.Component {
   }
 
   fetchTopNewsData() {
-    fetch(`https://newsapi.org/v2/top-headlines?country=${this.state.lang}&apiKey=6366134eeaf642709f19eff34dfaa561`)
+    fetch(`https://newsapi.org/v2/top-headlines?country=${this.state.lang}&apiKey=f0ebec092bbe46329bf986f0523d8a63`)
       .then(response => {
         //konversion json to js
         return response.json();
@@ -74,7 +74,10 @@ class App extends React.Component {
 
               return (
                 <div>
-                  <TopNews news={this.state.news} />
+                  <TopNews 
+                    news={this.state.news}
+                    lang={this.state.lang}
+                  />
                 </div>
               )
             }}

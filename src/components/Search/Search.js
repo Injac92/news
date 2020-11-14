@@ -39,7 +39,7 @@ class Search extends React.Component {
     console.log(this.state.filteredNews)
     return (
       <div className="search-container">
-        <h3>Search top news from {searchText} by term:</h3>
+        <h2>Search top news from {searchText} by term:</h2>
         <input className="search__input" type="text" placeholder="Search term" onChange={this.onSearch} ref={this.input} />
         <TopNewsList news={this.state.filteredNews} />
       </div>

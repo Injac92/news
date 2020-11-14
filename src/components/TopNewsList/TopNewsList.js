@@ -10,6 +10,7 @@ function TopNewsList(props) {
         title={item.title}
         imgurl={item.urlToImage}
         description={item.description}
+        content={item.content}
       />
     )
   })

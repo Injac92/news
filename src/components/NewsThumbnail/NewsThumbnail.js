@@ -9,19 +9,23 @@ class NewsThumbnail extends React.Component {
     super()
 
     this.state = {
-
       popUp: "none"
     }
 
-    this.toggleSingleNews = this.toggleSingleNews.bind(this)
+    this.openSingleNews = this.openSingleNews.bind(this)
+    this.closeSingleNews = this.closeSingleNews.bind(this)
 
   }
-  toggleSingleNews() {
+  openSingleNews() {
     this.setState({
       popUp: "block"
     })
   }
-
+  closeSingleNews() {
+    this.setState({
+      popUp: "none"
+    })
+  }
 
 
   render() {
@@ -41,11 +45,22 @@ class NewsThumbnail extends React.Component {
         <h3>{slicedTitle}</h3>
         {emptyImg}
         <p>{this.props.description}</p>
-        <span className="read-more__button" onClick={this.toggleSingleNews}>More</span>
-        <div className="pop-up" style={{ display: this.state.popUp }}>
-          POPUP
-          {this.props.title}
-          <span>X</span>
+        <span className="read-more__button" onClick={this.openSingleNews}>More</span>
+        <div className="pop-up-container" style={{ display: this.state.popUp }}>
+          <div className="pop-up-content">
+            <h2>{this.props.title}</h2>
+            <div className="pop-up-flex">
+              <div className="pop-up-img">
+                {emptyImg}
+              </div>
+              <p className="padding-0">{this.props.content}</p>
+            </div>
+            <p className="padding-0">
+              <span className="close__button" onClick={this.closeSingleNews}>Close</span>
+            </p>
+            
+          </div>
+          
         </div>
         
       </div>

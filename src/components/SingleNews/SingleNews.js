@@ -7,6 +7,7 @@ function SingleNews(props) {
   return (
     <div>
       {title}
+      <p>Single News</p>
       {/* <NewsThumbnail 
         key={url}
         title={title}

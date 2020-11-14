@@ -22,7 +22,7 @@ class CategoryList extends React.Component {
     this.fetchData();
   }
   fetchData() {
-    fetch(`https://newsapi.org/v2/top-headlines?country=${this.props.lang}&category=${this.props.category}&apiKey=6366134eeaf642709f19eff34dfaa561`)
+    fetch(`https://newsapi.org/v2/top-headlines?country=${this.props.lang}&category=${this.props.category}&apiKey=f0ebec092bbe46329bf986f0523d8a63`)
       .then(response => {
         return response.json();
       })
@@ -34,18 +34,42 @@ class CategoryList extends React.Component {
       .catch(error => console.log(error));
   }
   render() {
+    //slider setting - default and responsive
     const settings = {
       dots: true,
       infinite: true,
-      slidesToShow: 3,
-      slidesToScroll: 1,
-      autoplay: true,//true
+      slidesToShow: 4,
+      arrows: true,
+      slidesToScroll: 4,
+      autoplay: true,
       autoplaySpeed: 4000,
-      pauseOnHover: true
+      pauseOnHover: true,
+      responsive: [
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        },
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2
+          }
+        },
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3
+          }
+        }
+      ]
     };
 
-
-    const categArray = this.state.news.slice(0, 7).map((item, index) => {
+    const categArray = this.state.news.slice(0, 8).map((item, index) => {
       return (
 
         <NewsThumbnail
