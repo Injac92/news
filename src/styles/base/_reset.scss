@@ -8,7 +8,9 @@
 
 body {
   overflow-x: hidden;
-  background: $lightSkyBlue url(https://templated.co/items/demos/monochromed/css/images/overlay.png) repeat;
+  background: $lightSkyBlue
+    url(https://templated.co/items/demos/monochromed/css/images/overlay.png)
+    repeat;
 }
 a {
   text-decoration: none;

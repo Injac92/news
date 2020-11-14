@@ -1,13 +1,12 @@
 .newslist-container {
-    display: grid;
-    grid-template-columns: 1fr;
+  display: grid;
+  grid-template-columns: 1fr;
 
-    @include respond(mobile) {
-        grid-template-columns: 1fr 1fr;
-    }
+  @include respond(mobile) {
+    grid-template-columns: 1fr 1fr;
+  }
 
-    @include respond(tablet) {
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-
+  @include respond(tablet) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }

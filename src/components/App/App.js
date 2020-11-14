@@ -1,11 +1,12 @@
-import React from "react";
-import { Switch, Route } from "react-router-dom";
+import React from "react"
+import { Switch, Route } from "react-router-dom"
 
-import Navbar from "../Navbar/Navbar";
-import TopNews from "../TopNews/TopNews";
-import CategoriesHolder from "../CategoriesHolder/CategoriesHolder";
-import Search from "../Search/Search";
-
+import Navbar from "../Navbar/Navbar"
+import TopNews from "../TopNews/TopNews"
+import CategoriesHolder from "../CategoriesHolder/CategoriesHolder"
+import Search from "../Search/Search"
+import CategoryPage from "../CategoryPage/CategoryPage"
+import ErrorPage from "../ErrorPage/ErrorPage"
 
 class App extends React.Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class App extends React.Component {
     //initialising state
     this.state = {
       news: [],
-      lang: "us"
+      lang: "us",
     }
 
     this.langUS = this.langUS.bind(this)
@@ -25,7 +26,6 @@ class App extends React.Component {
     this.setState({ lang: "gb" }, () => {
       this.fetchTopNewsData()
     })
-
   }
   langUS() {
     this.setState({ lang: "us" }, () => {
@@ -34,25 +34,26 @@ class App extends React.Component {
   }
 
   fetchTopNewsData() {
-    fetch(`https://newsapi.org/v2/top-headlines?country=${this.state.lang}&apiKey=f0ebec092bbe46329bf986f0523d8a63`)
-      .then(response => {
+    fetch(
+      `https://newsapi.org/v2/top-headlines?country=${this.state.lang}&apiKey=1218ee36b17d49d4a61027bc3474b134`
+    )
+      .then((response) => {
         //konversion json to js
-        return response.json();
+        return response.json()
       })
-      .then(data => {
-        //putting data from API to state 
+      .then((data) => {
+        //putting data from API to state
         this.setState({
-          news: data.articles
-        });
+          news: data.articles,
+        })
       })
-      .catch(error => console.log(error));
+      .catch((error) => console.log(error))
   }
 
   componentDidMount() {
     //bring data from api
     //fetch(`https://...country=${this.state.lang}&apiKey...`)
     this.fetchTopNewsData()
-
   }
 
   render() {
@@ -60,40 +61,32 @@ class App extends React.Component {
     console.log(this.state.lang)
     return (
       <div className="app-container">
-        <Navbar
-          toGB={this.langGB}
-          toUS={this.langUS}
-          lang={this.state.lang}
-        />
-
+        <Navbar toGB={this.langGB} toUS={this.langUS} lang={this.state.lang} />
 
         <Switch>
           <Route
-            exact path="/"
+            exact
+            path="/"
             render={() => {
-
               return (
                 <div>
-                  <TopNews 
-                    news={this.state.news}
-                    lang={this.state.lang}
-                  />
+                  <TopNews news={this.state.news} lang={this.state.lang} />
                 </div>
               )
             }}
           />
 
           <Route
-            exact path="/categories"
+            exact
+            path="/categories"
             render={() => {
-              return (
-                <CategoriesHolder  lang={this.state.lang}/>
-              )
+              return <CategoriesHolder lang={this.state.lang} />
             }}
           />
 
           <Route
-            exact path="/search"
+            exact
+            path="/search"
             render={() => {
               return (
                 <Search
@@ -105,13 +98,23 @@ class App extends React.Component {
             }}
           />
 
-          {/* dont forget to create dummy error page! */}
-          <Route component={Error} />
+          <Route
+            path="/categories/:id"
+            render={(routerProps) => {
+              return (
+                <CategoryPage
+                  routerProps={routerProps}
+                  lang={this.state.lang}
+                />
+              )
+            }}
+          />
+
+          <Route component={ErrorPage} />
         </Switch>
       </div>
     )
   }
-
 }
 
 export default App

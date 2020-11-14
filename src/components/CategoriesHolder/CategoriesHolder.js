@@ -1,9 +1,8 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import CategoryList from "../CategoryList/CategoryList";
+import React from "react"
+import { Link } from "react-router-dom"
+import CategoryList from "../CategoryList/CategoryList"
 
 class CategoriesHolder extends React.Component {
-
   constructor(props) {
     super()
 
@@ -14,15 +13,12 @@ class CategoriesHolder extends React.Component {
         "health",
         "science",
         "sport",
-        "technology"
+        "technology",
       ],
     }
-
   }
 
-  componentDidMount(){
-    const categoryRoute = this.state.categoryNames
-  }
+  componentDidMount() {}
 
   render() {
     return (
@@ -30,11 +26,15 @@ class CategoriesHolder extends React.Component {
         {this.state.categoryNames.map((category, index) => {
           return (
             <>
-              <Link to="/:">
+              <Link to={`categories/${category + ""}`}>
                 <h2>Top {category} news</h2>
               </Link>
               <div className="category-section">
-                <CategoryList category={category} key={index} lang={this.props.lang} />
+                <CategoryList
+                  category={category}
+                  key={index}
+                  lang={this.props.lang}
+                />
               </div>
             </>
           )
@@ -42,6 +42,5 @@ class CategoriesHolder extends React.Component {
       </div>
     )
   }
-
 }
 export default CategoriesHolder

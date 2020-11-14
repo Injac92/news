@@ -1,5 +1,5 @@
-import React from "react";
-import NewsThumbnail from "../NewsThumbnail/NewsThumbnail";
+import React from "react"
+import NewsThumbnail from "../NewsThumbnail/NewsThumbnail"
 
 function TopNewsList(props) {
   //iterating through state object from App component

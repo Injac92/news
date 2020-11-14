@@ -3,7 +3,7 @@ import React from "react"
 import NewsThumbnail from "../NewsThumbnail/NewsThumbnail"
 
 function SingleNews(props) {
-  const {url, title, urlToImage, description} = props
+  const { url, title, urlToImage, description } = props
   return (
     <div>
       {title}
