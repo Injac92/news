@@ -5,11 +5,13 @@
   }
   .search__input {
     margin: 20px;
-    padding: 5px 15px;
+    padding: 6px 15px;
     font-size: 14px;
+    border: 2px solid $PortoRikoDay;
+    border-radius: 4px;
+    opacity: 0.7;
   }
   .search__input:focus {
-    border: 1px solid;
-    outline: black;
+    outline: none;
   }
 }

@@ -1,6 +1,7 @@
 import React from "react"
 import { Switch, Route } from "react-router-dom"
 
+import apiKey from "../../constants"
 import Navbar from "../Navbar/Navbar"
 import TopNews from "../TopNews/TopNews"
 import CategoriesHolder from "../CategoriesHolder/CategoriesHolder"
@@ -22,6 +23,7 @@ class App extends React.Component {
     this.fetchTopNewsData = this.fetchTopNewsData.bind(this)
   }
 
+  //language change functions
   langGB() {
     this.setState({ lang: "gb" }, () => {
       this.fetchTopNewsData()
@@ -35,7 +37,7 @@ class App extends React.Component {
 
   fetchTopNewsData() {
     fetch(
-      `https://newsapi.org/v2/top-headlines?country=${this.state.lang}&apiKey=1218ee36b17d49d4a61027bc3474b134`
+      `https://newsapi.org/v2/top-headlines?country=${this.state.lang}&apiKey=${apiKey}`
     )
       .then((response) => {
         //konversion json to js
@@ -52,13 +54,10 @@ class App extends React.Component {
 
   componentDidMount() {
     //bring data from api
-    //fetch(`https://...country=${this.state.lang}&apiKey...`)
     this.fetchTopNewsData()
   }
 
   render() {
-    console.log("rendered")
-    console.log(this.state.lang)
     return (
       <div className="app-container">
         <Navbar toGB={this.langGB} toUS={this.langUS} lang={this.state.lang} />

@@ -1,5 +1,3 @@
-import React from "react"
-
 import TopNewsList from "../TopNewsList/TopNewsList"
 
 function TopNews(props) {

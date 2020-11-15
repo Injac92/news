@@ -1,8 +1,7 @@
-import React from "react"
 import NewsThumbnail from "../NewsThumbnail/NewsThumbnail"
 
 function TopNewsList(props) {
-  //iterating through state object from App component
+  //iterating through state object from parent component
   const newArray = props.news.map((item, index) => {
     return (
       <NewsThumbnail

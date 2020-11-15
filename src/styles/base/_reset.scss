@@ -9,10 +9,10 @@
 body {
   overflow-x: hidden;
   background: $lightSkyBlue
-    url(https://templated.co/items/demos/monochromed/css/images/overlay.png)
-    repeat;
-}
-a {
-  text-decoration: none;
-  color: inherit;
+  url(https://templated.co/items/demos/monochromed/css/images/overlay.png)
+  repeat;
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 }

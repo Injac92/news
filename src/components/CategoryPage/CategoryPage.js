@@ -1,4 +1,6 @@
 import React from "react"
+
+import apiKey from "../../constants"
 import NewsThumbnail from "../NewsThumbnail/NewsThumbnail"
 
 class CategoryPage extends React.Component {
@@ -13,13 +15,15 @@ class CategoryPage extends React.Component {
     this.fetchData()
   }
 
+  //fetching data from api when props changes
+  //deprecated lifecycle method
   componentWillReceiveProps(nextProps) {
     this.fetchData()
   }
 
   fetchData() {
     fetch(
-      `https://newsapi.org/v2/top-headlines?country=${this.props.lang}&category=${this.props.routerProps.match.params.id}&apiKey=1218ee36b17d49d4a61027bc3474b134`
+      `https://newsapi.org/v2/top-headlines?country=${this.props.lang}&category=${this.props.routerProps.match.params.id}&apiKey=${apiKey}`
     )
       .then((response) => {
         return response.json()
@@ -33,6 +37,7 @@ class CategoryPage extends React.Component {
   }
 
   render() {
+    
     const categPage = this.state.news.map((item, index) => {
       return (
           <NewsThumbnail
@@ -44,7 +49,16 @@ class CategoryPage extends React.Component {
           />
       )
     })
-    return <div className="category-page">{categPage}</div>
+    return (
+      <div className="category-page-container">
+        <h2>All {this.props.routerProps.match.params.id} news</h2>
+        <div className="category-page-grid">
+          {categPage}
+        </div>
+        
+      </div>
+    
+    )
 
   }
 }

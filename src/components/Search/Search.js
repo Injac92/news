@@ -1,4 +1,5 @@
 import React from "react"
+
 import TopNewsList from "../TopNewsList/TopNewsList"
 
 class Search extends React.Component {
@@ -11,6 +12,7 @@ class Search extends React.Component {
     this.input = React.createRef()
     this.onSearch = this.onSearch.bind(this)
   }
+
   componentWillReceiveProps(nextProp) {
     this.setState({
       filteredNews: this.props.news,
@@ -19,8 +21,9 @@ class Search extends React.Component {
   }
 
   onSearch = (event) => {
+    //filtering titles and putting in state
+    //maybe better option would be filtering on server side
     const filtered = this.props.news.filter((element) => {
-      console.log(element.title, event.target.value)
       return element.title
         .toLowerCase()
         .includes(event.target.value.toLowerCase())
@@ -33,8 +36,6 @@ class Search extends React.Component {
   render() {
     const searchText =
       this.props.lang === "us" ? "United States" : "Great Britain"
-    console.log(this.state.searchNews)
-    console.log(this.state.filteredNews)
     return (
       <div className="search-container">
         <h2>Search top news from {searchText} by term:</h2>

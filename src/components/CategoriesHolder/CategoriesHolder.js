@@ -25,7 +25,8 @@ class CategoriesHolder extends React.Component {
       <div className="category-container">
         {this.state.categoryNames.map((category, index) => {
           return (
-            <>
+            <div key={index}>
+              {/* dynamic route for each category */}
               <Link to={`categories/${category + ""}`}>
                 <h2>Top {category} news</h2>
               </Link>
@@ -36,7 +37,7 @@ class CategoriesHolder extends React.Component {
                   lang={this.props.lang}
                 />
               </div>
-            </>
+            </div>
           )
         })}
       </div>

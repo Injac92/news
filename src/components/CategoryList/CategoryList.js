@@ -1,4 +1,6 @@
 import React from "react"
+
+import apiKey from "../../constants"
 import NewsThumbnail from "../NewsThumbnail/NewsThumbnail"
 import Slider from "react-slick"
 
@@ -7,22 +9,23 @@ class CategoryList extends React.Component {
     super(props)
     this.state = {
       news: [],
+      slideListSize: 5,
+      moreButton: "none"
     }
   }
+
   componentDidMount() {
     this.fetchData()
   }
 
-  // componentDidUpdate(){
-
-  // }
-
+  //fetching data from api when props changes
+  //deprecated lifecycle method
   componentWillReceiveProps(nextProps) {
     this.fetchData()
   }
   fetchData() {
     fetch(
-      `https://newsapi.org/v2/top-headlines?country=${this.props.lang}&category=${this.props.category}&apiKey=1218ee36b17d49d4a61027bc3474b134`
+      `https://newsapi.org/v2/top-headlines?country=${this.props.lang}&category=${this.props.category}&apiKey=${apiKey}&pageSize=${this.state.slideListSize}&page=0`
     )
       .then((response) => {
         return response.json()
@@ -35,47 +38,45 @@ class CategoryList extends React.Component {
       .catch((error) => console.log(error))
   }
   render() {
-    //slider setting - default and responsive
+    //slider settings - default and responsive
     const settings = {
       dots: true,
       infinite: true,
       slidesToShow: 4,
       arrows: true,
-      slidesToScroll: 4,
+      slidesToScroll: 1,
       autoplay: true,
-      autoplaySpeed: 4000,
+      autoplaySpeed: 3000,
       pauseOnHover: true,
       responsive: [
         {
           breakpoint: 480,
           settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
+            slidesToShow: 1
           },
         },
         {
           breakpoint: 768,
           settings: {
-            slidesToShow: 2,
-            slidesToScroll: 2,
+            slidesToShow: 2
           },
         },
         {
           breakpoint: 1024,
           settings: {
-            slidesToShow: 3,
-            slidesToScroll: 3,
+            slidesToShow: 3
           },
         },
       ],
     }
 
-    const categArray = this.state.news.slice(0, 8).map((item, index) => {
+    const categArray = this.state.news.map((item, index) => {
       return (
         <NewsThumbnail
           key={item.url}
           title={item.title}
           imgurl={item.urlToImage}
+          more={this.state.moreButton}
         />
       )
     })
