@@ -1,21 +1,19 @@
-.category-page-container{
+.category-page-container {
   h2 {
     text-align: center;
     margin-top: 30px;
     margin-bottom: 10px;
   }
   .category-page-grid {
-  display: grid;
-  grid-template-columns: 1fr;
+    display: grid;
+    grid-template-columns: 1fr;
 
-  @include respond(mobile) {
-    grid-template-columns: 1fr 1fr;
-  }
+    @include respond(mobile) {
+      grid-template-columns: 1fr 1fr;
+    }
 
-  @include respond(tablet) {
-    grid-template-columns: 1fr 1fr 1fr;
+    @include respond(tablet) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
   }
-  } 
 }
-
-  

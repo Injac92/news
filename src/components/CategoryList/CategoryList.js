@@ -10,7 +10,7 @@ class CategoryList extends React.Component {
     this.state = {
       news: [],
       slideListSize: 5,
-      moreButton: "none"
+      moreButton: "none",
     }
   }
 
@@ -52,19 +52,19 @@ class CategoryList extends React.Component {
         {
           breakpoint: 480,
           settings: {
-            slidesToShow: 1
+            slidesToShow: 1,
           },
         },
         {
           breakpoint: 768,
           settings: {
-            slidesToShow: 2
+            slidesToShow: 2,
           },
         },
         {
           breakpoint: 1024,
           settings: {
-            slidesToShow: 3
+            slidesToShow: 3,
           },
         },
       ],

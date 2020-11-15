@@ -33,18 +33,20 @@ class NewsThumbnail extends React.Component {
     const emptyImg = this.props.imgurl ? (
       <img src={this.props.imgurl} alt="" />
     ) : (
-        <img
-          src="https://icon-library.com/images/no-image-available-icon/no-image-available-icon-6.jpg"
-          alt="img doesn’t exist"
-        />
-      )
+      <img
+        src="https://icon-library.com/images/no-image-available-icon/no-image-available-icon-6.jpg"
+        alt="img doesn’t exist"
+      />
+    )
 
     const displayMoreBtn =
-      this.props.more === "none" ?
+      this.props.more === "none" ? (
         <span></span>
-        : <span className="read-more__button" onClick={this.openSingleNews}>
+      ) : (
+        <span className="read-more__button" onClick={this.openSingleNews}>
           More
         </span>
+      )
 
     return (
       <div className="thumbnail-container">

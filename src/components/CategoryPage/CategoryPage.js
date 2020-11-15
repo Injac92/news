@@ -37,29 +37,23 @@ class CategoryPage extends React.Component {
   }
 
   render() {
-    
     const categPage = this.state.news.map((item, index) => {
       return (
-          <NewsThumbnail
-            key={item.url}
-            title={item.title}
-            imgurl={item.urlToImage}
-            description={item.description}
-            content={item.content}
-          />
+        <NewsThumbnail
+          key={item.url}
+          title={item.title}
+          imgurl={item.urlToImage}
+          description={item.description}
+          content={item.content}
+        />
       )
     })
     return (
       <div className="category-page-container">
         <h2>All {this.props.routerProps.match.params.id} news</h2>
-        <div className="category-page-grid">
-          {categPage}
-        </div>
-        
+        <div className="category-page-grid">{categPage}</div>
       </div>
-    
     )
-
   }
 }
 export default CategoryPage
